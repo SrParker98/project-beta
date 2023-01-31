@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO APP</title>
+</head>
+<body>
+    <div class="todo-actions">
+        <!-- Meter el todo -->
+        <input
+            class="todo-actions_input"
+            placeholder="add details"
+        >
+        <!-- Botón para añadir un todo -->
+        <button
+            class="todo-actions_button"
+            onclick="addTodo()"
+        >Add</button>
+    
+    </div>
+    <div class="todo-list">
+        <!-- PINTAR LOS TODOS QUE HAGA FALTA -->
+    </div>
+    
+    <script src="./index.js"></script>
+
+</body>
+</html>
+
+const list = [];
+debugger;
+
+function addTodo() {
+    const inputValue = document.querySelector('.todo-actions_input').value;
+    const todoObject = {
+        text: inputValue,
+        status: 'ongoing',
+        date: new Date(),
+    };
+    list.push(todoObject);
+    
+    const container = document.querySelector('.todo-list');
+    container.innerHTML = '';
+    
+    list.forEach(function(todoItem) {
+        const template = `<div class="todo-list_item">
+            <input type="checkbox">
+            <label>${todoItem.text}</label>
+        </div>`;
+        container.innerHTML = container.innerHTML + template;
+    });
+}
